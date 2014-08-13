@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/composite_map_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <RelativeLayout
+        android:id="@+id/map_viewpager_container"
+        android:visibility="invisible"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/map_viewpager_above_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:focusable="false"
+            android:src="@drawable/above_gray_shadow"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/map_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/map_viewpager_above_shadow"
+            android:background="@android:color/black"/>
+    </RelativeLayout>
+</FrameLayout>
