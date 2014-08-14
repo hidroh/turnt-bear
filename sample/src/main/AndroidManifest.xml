@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.hidroh.turntbear" >
+    <uses-sdk android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+
+        <!-- Required by Google Maps Android API -->
+        <!-- Release/Debug keys are set in build.gradle -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/com.google.android.maps.v2.API_KEY" />
+
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_activity_map" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

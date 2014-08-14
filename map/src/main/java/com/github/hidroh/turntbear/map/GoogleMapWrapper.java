@@ -8,7 +8,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.hidroh.turntbear.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.api.GoogleApiClient;

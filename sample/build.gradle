@@ -1,0 +1,34 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        applicationId "com.github.hidroh.turntbear"
+        minSdkVersion 9
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+        resValue "string", "com.google.android.maps.v2.API_KEY", "AIzaSyAYnqlUkOvW1uOqNWIL72fZOj_i1gVa4S8"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("${projectDir}/debug.keystore")
+            storePassword "password"
+            keyAlias "alias"
+            keyPassword "password"
+        }
+    }
+}
+
+dependencies {
+    compile project(':map')
+    compile 'com.android.support:appcompat-v7:19.1.0'
+    compile 'com.squareup.picasso:picasso:2.3.+'
+}

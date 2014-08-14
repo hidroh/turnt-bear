@@ -17,6 +17,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.VisibleRegion;
 
 /**
  * Base class for composite map screen, including a map view and details view
@@ -28,7 +29,7 @@ public abstract class CompositeMapFragment<T extends IMapMarker> extends Fragmen
      * Callback interface for async network events
      * @param <T>   parameterized response type
      */
-    private interface NetworkCallbacks<T> {
+    public interface NetworkCallbacks<T> {
         /**
          * Fired when network call successfully returns response
          * @param items list of items in response
@@ -134,7 +135,7 @@ public abstract class CompositeMapFragment<T extends IMapMarker> extends Fragmen
     }
 
     protected void handleCameraChange() {
-        searchByVisibleRegion(getNetworkCallbacks());
+        searchByVisibleRegion(mMap.getVisibleRegion(), getNetworkCallbacks());
         if (getActivity() instanceof LocationAware) {
             ((LocationAware) getActivity()).onLocationChanged(
                     mMap.getVisibleRegion());
@@ -255,9 +256,10 @@ public abstract class CompositeMapFragment<T extends IMapMarker> extends Fragmen
      * This method should response to visible region change by retrieving
      * {@link com.github.hidroh.turntbear.map.model.IMapMarker} that correspond to
      * updated visible region
+     * @param visibleRegion     current visible region
      * @param networkCallbacks  async callback that will be triggered when this method returns
      */
-    protected abstract void searchByVisibleRegion(NetworkCallbacks<T> networkCallbacks);
+    protected abstract void searchByVisibleRegion(VisibleRegion visibleRegion, NetworkCallbacks<T> networkCallbacks);
 
     /**
      * Get initial map center latitude
