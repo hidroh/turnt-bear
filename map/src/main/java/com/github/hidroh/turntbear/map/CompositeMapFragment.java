@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -102,7 +103,27 @@ public abstract class CompositeMapFragment<T extends IMapMarker> extends Fragmen
                 return new Fragment() {
                     @Override
                     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-                        return inflateDetailsView(inflater, container, savedInstanceState, item);
+                        final View view = inflateDetailsView(inflater, container, savedInstanceState, item);
+                        view.setOnTouchListener(new View.OnTouchListener() {
+                            private float startY;
+
+                            @Override
+                            public boolean onTouch(View v, MotionEvent event) {
+                                if (event.getAction() == MotionEvent.ACTION_UP) {
+                                    if (startY < event.getY()) { // swipe down
+                                        mMarkerManager.setCurrentMarker(null);
+                                        toggleDetailsView(false);
+                                    }
+                                }
+
+                                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                                    startY = event.getY();
+                                }
+
+                                return true;
+                            }
+                        });
+                        return view;
                     }
                 };
             }
