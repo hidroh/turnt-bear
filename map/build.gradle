@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'robolectric'
+apply plugin: 'jacoco'
 
 repositories {
     mavenCentral()
@@ -14,10 +16,39 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    sourceSets {
+        // Move the tests to tests/java, tests/res, etc...
+        androidTest {
+            java.srcDirs = ['src/test/java']
+        }
+    }
 }
 
 dependencies {
     compile 'com.android.support:appcompat-v7:19.1.0'
-    compile 'com.google.maps.android:android-maps-utils:0.3.+'
     compile 'com.google.android.gms:play-services:4+'
+
+    androidTestCompile 'org.robolectric:robolectric:2.3',
+            'junit:junit:4.11',
+            'org.mockito:mockito-core:1.9.5+',
+            'com.squareup:fest-android:1.0.+'
 }
+
+task jacocoTestReport(type: JacocoReport) {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/reports/coverage"
+    }
+
+    classDirectories = fileTree(dir: "${buildDir}/intermediates/classes/debug",
+            exclude: [
+                    '**/R.class',
+                    '**/R$*.class'
+            ])
+    sourceDirectories = files(android.sourceSets.main.java.srcDirs)
+    executionData = files("${buildDir}/jacoco/testDebug.exec")
+}
+
+jacocoTestReport.dependsOn test
