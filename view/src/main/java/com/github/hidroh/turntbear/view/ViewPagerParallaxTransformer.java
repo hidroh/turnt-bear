@@ -1,4 +1,4 @@
-package com.github.hidroh.turntbear.map.view;
+package com.github.hidroh.turntbear.view;
 
 import android.annotation.TargetApi;
 import android.os.Build;

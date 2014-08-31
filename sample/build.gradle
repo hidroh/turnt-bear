@@ -29,6 +29,7 @@ android {
 
 dependencies {
     compile project(':map')
+    compile project(':list')
     compile 'com.android.support:appcompat-v7:19.1.0'
     compile 'com.squareup.picasso:picasso:2.3.+'
 }

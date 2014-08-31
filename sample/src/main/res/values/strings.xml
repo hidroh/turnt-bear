@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">turnt-bear</string>
+    <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_list">ListActivity</string>
 </resources>

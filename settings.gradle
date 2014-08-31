@@ -1,1 +1,1 @@
-include ':map', ':sample'
+include ':map', ':list', ':sample', ':view'

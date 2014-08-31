@@ -12,7 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.github.hidroh.turntbear.map.model.IMapMarker;
-import com.github.hidroh.turntbear.map.view.ViewPagerParallaxTransformer;
+import com.github.hidroh.turntbear.view.ViewPagerParallaxTransformer;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.CameraPosition;

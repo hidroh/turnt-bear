@@ -16,12 +16,18 @@
             android:value="@string/com.google.android.maps.v2.API_KEY" />
 
         <activity
-            android:name=".MapActivity"
-            android:label="@string/title_activity_map" >
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_activity_map" />
+        <activity
+            android:name=".ListActivity"
+            android:label="@string/title_activity_list" />
     </application>
 </manifest>
